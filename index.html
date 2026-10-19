@@ -10,7 +10,6 @@
 <body>
   <header class="hero">
     <div class="hero-inner">
-      <p class="eyebrow">Robotics · Policy Learning · Sim-to-Real</p>
       <h1>ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning</h1>
       <p class="authors">Kotaro Kajitsuka<sup>1,2</sup>, Masaki Murooka<sup>2</sup>, Fumio Kanehiro<sup>1,2</sup></p>
       <p class="affiliations"><sup>1</sup>University of Tsukuba &nbsp; <sup>2</sup>AIST</p>
@@ -52,11 +51,19 @@
     <section class="section alignment-section" id="alignment">
       <h2>Observation Alignment</h2>
       <p class="section-lead">Trackers make it possible to run the state-based teacher on the real robot, but they appear in the collected images. ReDOA removes these marker regions before training the image-based student.</p>
-      <figure class="figure alignment-figure"><img src="assets/observation-alignment.png" alt="Image compositing removes temporary object markers from real-robot observations"></figure>
-      <div class="video-card alignment-video">
-        <h3>Marker Removal During Data Collection</h3>
-        <p>Five Box Rotation examples: the temporary marker is visible on the left and removed from the aligned observation on the right.</p>
-        <video controls preload="metadata" playsinline poster="assets/videos/marker-removal-poster.jpg"><source src="assets/videos/marker-removal-comparison.mp4" type="video/mp4"></video>
+      <div class="alignment-layout">
+        <div class="alignment-figure-column">
+          <div class="alignment-figure-copy">
+            <h3>Observation Alignment Pipeline</h3>
+            <p>Detect the temporary marker region, combine it with the object mask, and inpaint it to create an aligned observation.</p>
+          </div>
+          <figure class="alignment-figure"><img src="assets/observation-alignment.png" alt="Image compositing removes temporary object markers from real-robot observations"></figure>
+        </div>
+        <div class="video-card alignment-video">
+          <div class="alignment-video-frame">
+            <video controls autoplay muted loop playsinline preload="none" poster="assets/videos/marker-removal-poster.jpg"><source src="assets/videos/marker-removal-comparison.mp4" type="video/mp4"></video>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -68,9 +75,9 @@
           <img class="task-image" src="assets/box-rotation.png" alt="Box rotation task">
           <div class="evaluation-content"><h3>Box Rotation</h3><p>Rotate the box to the target orientation.</p>
             <div class="rollout-list">
-              <div class="rollout"><h4>ReDOA · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-box-rotation-redoa.mp4" type="video/mp4"></video></div>
-              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-box-rotation-human-demonstration.mp4" type="video/mp4"></video></div>
-              <div class="rollout"><h4>Simulation Distillation · Failure</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-box-rotation-simulation-distillation-failure.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>ReDOA · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-box-rotation-redoa.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-box-rotation-human-demonstration.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>Simulation Distillation · Failure</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-box-rotation-simulation-distillation-failure.mp4" type="video/mp4"></video></div>
             </div>
           </div>
         </article>
@@ -78,8 +85,8 @@
           <img class="task-image" src="assets/drawer-opening.png" alt="Drawer opening task">
           <div class="evaluation-content"><h3>Drawer Opening</h3><p>Open a drawer from varied initial positions.</p>
             <div class="rollout-list">
-              <div class="rollout"><h4>ReDOA · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-drawer-opening-redoa.mp4" type="video/mp4"></video></div>
-              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-drawer-opening-human-demonstration.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>ReDOA · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-drawer-opening-redoa.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-drawer-opening-human-demonstration.mp4" type="video/mp4"></video></div>
             </div>
           </div>
         </article>
@@ -87,8 +94,8 @@
           <img class="task-image" src="assets/cylinder-rolling.jpg" alt="Cylinder rolling task">
           <div class="evaluation-content"><h3>Cylinder Rolling</h3><p>Roll the tapered cylinder to the target orientation.</p>
             <div class="rollout-list">
-              <div class="rollout"><h4>ReDOA · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-cylinder-rolling-redoa.mp4" type="video/mp4"></video></div>
-              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-cylinder-rolling-human-demonstration.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>ReDOA · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-cylinder-rolling-redoa.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-cylinder-rolling-human-demonstration.mp4" type="video/mp4"></video></div>
             </div>
           </div>
         </article>

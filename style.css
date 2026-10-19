@@ -18,7 +18,7 @@ h1 { max-width: 960px; margin: 0 auto 22px; font-size: clamp(2rem, 4.4vw, 3.35re
 .button.primary { border-color: var(--accent); color: white; background: var(--accent); }
 .button.unavailable { border-style: dashed; color: #697c84; background: transparent; cursor: default; }
 .button.unavailable:hover { transform: none; border-color: #b9cbcf; }
-.hero-figure { max-width: 920px; margin: 0 auto; padding: 13px; border: 1px solid rgba(24,43,54,.08); border-radius: 15px; background: white; box-shadow: 0 16px 42px rgba(31,68,76,.09); }
+.hero-figure { max-width: 740px; margin: 0 auto; padding: 13px; border: 1px solid rgba(24,43,54,.08); border-radius: 15px; background: white; box-shadow: 0 16px 42px rgba(31,68,76,.09); }
 .hero-figure img, .figure img { display: block; width: 100%; height: auto; }
 .tagline { max-width: 760px; margin: 25px auto 0; color: #38515d; font-family: Manrope, sans-serif; font-size: 1.18rem; font-weight: 600; }
 .section { padding: 68px 24px; }
@@ -33,9 +33,23 @@ video { display: block; width: 100%; max-height: 620px; border-radius: 13px; bac
 .video-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
 .video-card p { margin: 0 0 14px; color: var(--muted); font-size: .91rem; }
 .video-card video { max-height: none; border-radius: 8px; box-shadow: none; }
-.alignment-section { max-width: 1040px; margin: auto; }
-.alignment-figure { max-width: 850px; }
-.alignment-video { max-width: 920px; margin: 30px auto 0; }
+.alignment-section { max-width: 1160px; margin: auto; }
+.alignment-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: center; }
+.alignment-figure-column { min-width: 0; }
+.alignment-figure-copy { margin: 0 0 14px; text-align: center; }
+.alignment-figure-copy h3 { margin: 0 0 5px; font-size: 1.05rem; }
+.alignment-figure-copy p { max-width: 620px; margin: 0 auto; color: var(--muted); font-size: .91rem; }
+.alignment-figure { width: min(100%, 560px); margin: 0 auto; padding: 9px; border: 1px solid #e1e9eb; border-radius: 12px; background: #fff; box-shadow: 0 8px 24px rgba(20,50,60,.06); }
+.alignment-figure img { display: block; width: 100%; height: auto; border-radius: 5px; }
+.alignment-video { margin: 0; }
+.alignment-video-frame { position: relative; width: fit-content; max-width: 100%; margin: 0 auto; }
+.alignment-video video {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: min(75vh, 760px);
+  margin: 0 auto;
+}
 .figure { max-width: 980px; margin: 26px auto 34px; }
 .secondary-figure { max-width: 860px; margin-top: 40px; }
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; margin-top: 34px; }
@@ -58,4 +72,5 @@ video { display: block; width: 100%; max-height: 620px; border-radius: 13px; bac
 pre { overflow-x: auto; margin: 22px 0 0; padding: 21px 24px; border-radius: 10px; color: #d9edf0; background: #18313b; font-size: .86rem; line-height: 1.65; }
 footer { padding: 23px; color: #d4e1e3; background: #18313b; text-align: center; font-size: .85rem; }
 footer p { margin: 0; }
-@media (max-width: 700px) { .hero { padding: 45px 18px 36px; } .section { padding: 50px 19px; } .cards { grid-template-columns: 1fr; } .evaluation-card { grid-template-columns: 1fr; } .task-image { max-height: 260px; } .affiliations { max-width: 430px; } }
+@media (max-width: 900px) { .alignment-layout { grid-template-columns: 1fr; gap: 24px; } .alignment-figure { width: min(100%, 520px); } }
+@media (max-width: 700px) { .hero { padding: 45px 18px 36px; } .section { padding: 50px 19px; } .cards { grid-template-columns: 1fr; } .alignment-layout { gap: 20px; } .alignment-figure { width: min(100%, 416px); } .evaluation-card { grid-template-columns: 1fr; } .task-image { max-height: 260px; } .affiliations { max-width: 430px; } }
