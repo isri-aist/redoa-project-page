@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning">
+  <title>ReDOA — Real-World Distillation via Observation Alignment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Robotics · Policy Learning · Sim-to-Real</p>
+      <h1>ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning</h1>
+      <p class="authors">Kotaro Kajitsuka<sup>1,2</sup>, Masaki Murooka<sup>2</sup>, Fumio Kanehiro<sup>1,2</sup></p>
+      <p class="affiliations"><sup>1</sup>University of Tsukuba &nbsp; <sup>2</sup>AIST</p>
+      <nav class="actions" aria-label="Project links">
+        <span class="button unavailable" aria-disabled="true">arXiv / Paper · Coming Soon</span>
+        <span class="button unavailable" aria-disabled="true">YouTube Video · Coming Soon</span>
+      </nav>
+      <figure class="hero-figure"><img src="assets/concept.png" alt="Conceptual overview of the ReDOA framework"></figure>
+      <p class="tagline">Learning image-based manipulation policies from real-world experience, without expert demonstrations.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section narrow" id="abstract">
+      <h2>Abstract</h2>
+      <p>Data-driven learning for general-purpose robotic manipulation presents a fundamental trade-off between data-collection cost and adaptability to real-world environments. Imitation learning requires costly human demonstrations, whereas simulation-based learning is vulnerable to sim-to-real gaps in dynamics and sensor observations. We propose <strong>ReDOA</strong> (Real-World Distillation via Observation Alignment), a framework that decouples control learning from perception learning to learn image-based policies in the real world. A state-based teacher policy trained in simulation is executed on a real robot, and its control knowledge is distilled into an image-based student policy using the collected trajectories. Observation Alignment uses image compositing to remove visual artifacts caused by temporary object trackers, reducing the observation mismatch between data collection and tracker-free deployment. In real-robot experiments on three non-prehensile manipulation tasks, our method achieves a strong balance between task success and execution efficiency.</p>
+    </section>
+
+    <section class="section video-section" id="video">
+      <h2>Project Video</h2>
+      <p class="section-lead">An overview of ReDOA and its real-robot experiments.</p>
+      <video controls preload="metadata" playsinline poster="assets/videos/project-video-poster.jpg">
+        <source src="assets/videos/real-robot-demonstrations.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+    </section>
+
+    <section class="section" id="method">
+      <h2>Method</h2>
+      <p class="section-lead">ReDOA is a sim-to-real-to-real pipeline: learn control with a state-based teacher in simulation, collect its demonstrations on the robot, then distill them into an image-based student.</p>
+      <figure class="figure"><img src="assets/pipeline.png" alt="ReDOA learning pipeline"></figure>
+      <div class="cards">
+        <article><span class="number">01</span><h3>Train a state-based teacher</h3><p>Learn a task policy in simulation using object and robot state, separating control learning from visual perception.</p></article>
+        <article><span class="number">02</span><h3>Collect real-robot trajectories</h3><p>Run the teacher with temporary trackers that provide object states, producing consistent and efficient demonstrations.</p></article>
+        <article><span class="number">03</span><h3>Align observations and distill</h3><p>Composite tracker regions out of recorded images, then train an image-based student for tracker-free deployment.</p></article>
+      </div>
+    </section>
+
+    <section class="section alignment-section" id="alignment">
+      <h2>Observation Alignment</h2>
+      <p class="section-lead">Trackers make it possible to run the state-based teacher on the real robot, but they appear in the collected images. ReDOA removes these marker regions before training the image-based student.</p>
+      <figure class="figure alignment-figure"><img src="assets/observation-alignment.png" alt="Image compositing removes temporary object markers from real-robot observations"></figure>
+      <div class="video-card alignment-video">
+        <h3>Marker Removal During Data Collection</h3>
+        <p>Five Box Rotation examples: the temporary marker is visible on the left and removed from the aligned observation on the right.</p>
+        <video controls preload="metadata" playsinline poster="assets/videos/marker-removal-poster.jpg"><source src="assets/videos/marker-removal-comparison.mp4" type="video/mp4"></video>
+      </div>
+    </section>
+
+    <section class="section shaded" id="experiments">
+      <h2>Real-World Rollout Evaluation</h2>
+      <p class="section-lead">Representative policy rollouts on the three manipulation tasks. The clips are grouped by task and identify the policy or demonstration source; result overlays indicate success or failure.</p>
+      <div class="evaluation-grid">
+        <article class="evaluation-card">
+          <img class="task-image" src="assets/box-rotation.png" alt="Box rotation task">
+          <div class="evaluation-content"><h3>Box Rotation</h3><p>Rotate the box to the target orientation.</p>
+            <div class="rollout-list">
+              <div class="rollout"><h4>ReDOA · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-box-rotation-redoa.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-box-rotation-human-demonstration.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>Simulation Distillation · Failure</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-box-rotation-simulation-distillation-failure.mp4" type="video/mp4"></video></div>
+            </div>
+          </div>
+        </article>
+        <article class="evaluation-card">
+          <img class="task-image" src="assets/drawer-opening.png" alt="Drawer opening task">
+          <div class="evaluation-content"><h3>Drawer Opening</h3><p>Open a drawer from varied initial positions.</p>
+            <div class="rollout-list">
+              <div class="rollout"><h4>ReDOA · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-drawer-opening-redoa.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-drawer-opening-human-demonstration.mp4" type="video/mp4"></video></div>
+            </div>
+          </div>
+        </article>
+        <article class="evaluation-card">
+          <img class="task-image" src="assets/cylinder-rolling.jpg" alt="Cylinder rolling task">
+          <div class="evaluation-content"><h3>Cylinder Rolling</h3><p>Roll the tapered cylinder to the target orientation.</p>
+            <div class="rollout-list">
+              <div class="rollout"><h4>ReDOA · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-cylinder-rolling-redoa.mp4" type="video/mp4"></video></div>
+              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls preload="none" playsinline><source src="assets/videos/rollout-cylinder-rolling-human-demonstration.mp4" type="video/mp4"></video></div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <figure class="figure comparison"><img src="assets/baselines.png" alt="Comparison of ReDOA and baseline learning pipelines"></figure>
+      <p class="caption">ReDOA is compared with policy distillation in simulation and imitation learning from human demonstrations. Evaluation considers both success rate and execution efficiency.</p>
+    </section>
+
+    <section class="section narrow" id="bibtex">
+      <h2>BibTeX</h2>
+      <pre><code>@article{kajitsuka2026redoa,
+  title   = {ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning},
+  author  = {Kajitsuka, Kotaro and Murooka, Masaki and Kanehiro, Fumio},
+  journal = {Journal of Robotics and Mechatronics},
+  year    = {2026}
+}</code></pre>
+    </section>
+  </main>
+  <footer><p>ReDOA · Real-World Distillation via Observation Alignment</p></footer>
+</body>
+</html>
