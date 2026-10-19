@@ -60,8 +60,13 @@
           <figure class="alignment-figure"><img src="assets/observation-alignment.png" alt="Image compositing removes temporary object markers from real-robot observations"></figure>
         </div>
         <div class="video-card alignment-video">
-          <div class="alignment-video-frame">
-            <video controls autoplay muted loop playsinline preload="none" poster="assets/videos/marker-removal-poster.jpg"><source src="assets/videos/marker-removal-comparison.mp4" type="video/mp4"></video>
+          <div class="alignment-tabs" role="tablist" aria-label="Marker removal examples">
+            <button class="alignment-tab" type="button" role="tab" id="marker-tab-box" aria-selected="true" aria-controls="marker-panel" tabindex="0" data-video="assets/videos/marker-removal-comparison.mp4" data-poster="assets/videos/marker-removal-poster.jpg">Box Rotation</button>
+            <button class="alignment-tab" type="button" role="tab" id="marker-tab-drawer" aria-selected="false" aria-controls="marker-panel" tabindex="-1" data-video="assets/videos/marker-removal-drawer-opening.mp4" data-poster="assets/videos/marker-removal-drawer-opening-poster.jpg">Drawer Opening</button>
+            <button class="alignment-tab" type="button" role="tab" id="marker-tab-cylinder" aria-selected="false" aria-controls="marker-panel" tabindex="-1" data-video="assets/videos/marker-removal-cylinder-rolling.mp4" data-poster="assets/videos/marker-removal-cylinder-rolling-poster.jpg">Cylinder Rolling</button>
+          </div>
+          <div class="alignment-video-frame" id="marker-panel" role="tabpanel" aria-labelledby="marker-tab-box">
+            <video id="marker-removal-video" controls autoplay muted loop playsinline preload="none" poster="assets/videos/marker-removal-poster.jpg"><source src="assets/videos/marker-removal-comparison.mp4" type="video/mp4"></video>
           </div>
         </div>
       </div>
@@ -116,5 +121,40 @@
     </section>
   </main>
   <footer><p>ReDOA · Real-World Distillation via Observation Alignment</p></footer>
+  <script>
+    const markerTabs = [...document.querySelectorAll('.alignment-tab')];
+    const markerVideo = document.querySelector('#marker-removal-video');
+    const markerSource = markerVideo.querySelector('source');
+    const markerPanel = document.querySelector('#marker-panel');
+
+    function selectMarkerTab(tab, focus = false) {
+      markerTabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', selected);
+        item.tabIndex = selected ? 0 : -1;
+      });
+      markerPanel.setAttribute('aria-labelledby', tab.id);
+      markerVideo.pause();
+      markerSource.src = tab.dataset.video;
+      markerVideo.poster = tab.dataset.poster;
+      markerVideo.load();
+      markerVideo.play().catch(() => {});
+      if (focus) tab.focus();
+    }
+
+    markerTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectMarkerTab(tab));
+      tab.addEventListener('keydown', event => {
+        let nextIndex = index;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % markerTabs.length;
+        else if (event.key === 'ArrowLeft') nextIndex = (index + markerTabs.length - 1) % markerTabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = markerTabs.length - 1;
+        else return;
+        event.preventDefault();
+        selectMarkerTab(markerTabs[nextIndex], true);
+      });
+    });
+  </script>
 </body>
 </html>
