@@ -17,7 +17,7 @@
         <span class="button unavailable" aria-disabled="true">arXiv / Paper · Coming Soon</span>
         <span class="button unavailable" aria-disabled="true">YouTube Video · Coming Soon</span>
       </nav>
-      <figure class="hero-figure"><img src="assets/concept.png" alt="Conceptual overview of the ReDOA framework"></figure>
+      <figure class="hero-figure"><img src="assets/concept-transparent.png" alt="Conceptual overview of the ReDOA framework"></figure>
       <p class="tagline">Learning image-based manipulation policies from real-world experience, without expert demonstrations.</p>
     </div>
   </header>
@@ -67,40 +67,42 @@
     </section>
 
     <section class="section shaded" id="experiments">
-      <h2>Real-World Rollout Evaluation</h2>
-      <p class="section-lead">Representative policy rollouts on the three manipulation tasks. The clips are grouped by task and identify the policy or demonstration source; result overlays indicate success or failure.</p>
-      <div class="evaluation-grid">
-        <article class="evaluation-card">
-          <img class="task-image" src="assets/box-rotation.png" alt="Box rotation task">
-          <div class="evaluation-content"><h3>Box Rotation</h3><p>Rotate the box to the target orientation.</p>
-            <div class="rollout-list">
-              <div class="rollout"><h4>ReDOA · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-box-rotation-redoa.mp4" type="video/mp4"></video></div>
-              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-box-rotation-human-demonstration.mp4" type="video/mp4"></video></div>
-              <div class="rollout"><h4>Simulation Distillation · Failure</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-box-rotation-simulation-distillation-failure.mp4" type="video/mp4"></video></div>
+      <div class="shaded-inner">
+        <h2>Real-World Rollout Evaluation</h2>
+        <p class="section-lead">Representative policy rollouts on the three manipulation tasks. The clips are grouped by task and identify the policy or demonstration source; result overlays indicate success or failure.</p>
+        <figure class="figure comparison"><img src="assets/baselines.png" alt="Comparison of ReDOA and baseline learning pipelines"></figure>
+        <p class="caption">ReDOA is compared with policy distillation in simulation and imitation learning from human demonstrations. Evaluation considers both success rate and execution efficiency.</p>
+        <div class="evaluation-grid">
+          <article class="evaluation-card">
+            <img class="task-image" src="assets/box-rotation.png" alt="Box rotation task">
+            <div class="evaluation-content"><h3>Box Rotation</h3><p>Rotate the box to the target orientation.</p>
+              <div class="rollout-list">
+                <div class="rollout"><h4>ReDOA · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-box-rotation-redoa.mp4" type="video/mp4"></video></div>
+                <div class="rollout"><h4>Human Demonstration · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-box-rotation-human-demonstration.mp4" type="video/mp4"></video></div>
+                <div class="rollout"><h4>Simulation Distillation · Failure</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-box-rotation-simulation-distillation-failure.mp4" type="video/mp4"></video></div>
+              </div>
             </div>
-          </div>
-        </article>
-        <article class="evaluation-card">
-          <img class="task-image" src="assets/drawer-opening.png" alt="Drawer opening task">
-          <div class="evaluation-content"><h3>Drawer Opening</h3><p>Open a drawer from varied initial positions.</p>
-            <div class="rollout-list">
-              <div class="rollout"><h4>ReDOA · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-drawer-opening-redoa.mp4" type="video/mp4"></video></div>
-              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-drawer-opening-human-demonstration.mp4" type="video/mp4"></video></div>
+          </article>
+          <article class="evaluation-card">
+            <img class="task-image" src="assets/drawer-opening.png" alt="Drawer opening task">
+            <div class="evaluation-content"><h3>Drawer Opening</h3><p>Open a drawer from varied initial positions.</p>
+              <div class="rollout-list">
+                <div class="rollout"><h4>ReDOA · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-drawer-opening-redoa.mp4" type="video/mp4"></video></div>
+                <div class="rollout"><h4>Human Demonstration · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-drawer-opening-human-demonstration.mp4" type="video/mp4"></video></div>
+              </div>
             </div>
-          </div>
-        </article>
-        <article class="evaluation-card">
-          <img class="task-image" src="assets/cylinder-rolling.jpg" alt="Cylinder rolling task">
-          <div class="evaluation-content"><h3>Cylinder Rolling</h3><p>Roll the tapered cylinder to the target orientation.</p>
-            <div class="rollout-list">
-              <div class="rollout"><h4>ReDOA · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-cylinder-rolling-redoa.mp4" type="video/mp4"></video></div>
-              <div class="rollout"><h4>Human Demonstration · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-cylinder-rolling-human-demonstration.mp4" type="video/mp4"></video></div>
+          </article>
+          <article class="evaluation-card">
+            <img class="task-image" src="assets/cylinder-rolling.jpg" alt="Cylinder rolling task">
+            <div class="evaluation-content"><h3>Cylinder Rolling</h3><p>Roll the tapered cylinder to the target orientation.</p>
+              <div class="rollout-list">
+                <div class="rollout"><h4>ReDOA · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-cylinder-rolling-redoa.mp4" type="video/mp4"></video></div>
+                <div class="rollout"><h4>Human Demonstration · Success</h4><video controls autoplay muted loop playsinline preload="none"><source src="assets/videos/rollout-cylinder-rolling-human-demonstration.mp4" type="video/mp4"></video></div>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        </div>
       </div>
-      <figure class="figure comparison"><img src="assets/baselines.png" alt="Comparison of ReDOA and baseline learning pipelines"></figure>
-      <p class="caption">ReDOA is compared with policy distillation in simulation and imitation learning from human demonstrations. Evaluation considers both success rate and execution efficiency.</p>
     </section>
 
     <section class="section narrow" id="bibtex">
