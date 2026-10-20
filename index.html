@@ -39,13 +39,7 @@
 
     <section class="section" id="method">
       <h2>Method</h2>
-      <p class="section-lead">ReDOA is a sim-to-real-to-real pipeline: learn control with a state-based teacher in simulation, collect its demonstrations on the robot, then distill them into an image-based student.</p>
-      <figure class="figure"><img src="assets/pipeline.png" alt="ReDOA learning pipeline"></figure>
-      <div class="cards">
-        <article><span class="number">01</span><h3>Train a state-based teacher</h3><p>Learn a task policy in simulation using object and robot state, separating control learning from visual perception.</p></article>
-        <article><span class="number">02</span><h3>Collect real-robot trajectories</h3><p>Run the teacher with temporary trackers that provide object states, producing consistent and efficient demonstrations.</p></article>
-        <article><span class="number">03</span><h3>Align observations and distill</h3><p>Composite tracker regions out of recorded images, then train an image-based student for tracker-free deployment.</p></article>
-      </div>
+      <figure class="figure method-figure"><img src="assets/pipeline.png" alt="ReDOA learning pipeline"></figure>
     </section>
 
     <section class="section alignment-section" id="alignment">

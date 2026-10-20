@@ -58,6 +58,7 @@ video { display: block; width: 100%; max-height: 620px; border-radius: 13px; bac
   margin: 0 auto;
 }
 .figure { max-width: 980px; margin: 26px auto 34px; }
+.method-figure { width: 110%; max-width: 1078px; margin-left: -5%; }
 .secondary-figure { max-width: 860px; margin-top: 40px; }
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; margin-top: 34px; }
 .cards article { padding: 23px; border: 1px solid #e1e9eb; border-radius: 12px; background: #fff; }
@@ -80,4 +81,4 @@ pre { overflow-x: auto; margin: 22px 0 0; padding: 21px 24px; border-radius: 10p
 footer { padding: 23px; color: #d4e1e3; background: #18313b; text-align: center; font-size: .85rem; }
 footer p { margin: 0; }
 @media (max-width: 900px) { .alignment-section { left: auto; width: auto; max-width: 100%; margin: auto; transform: none; } .alignment-layout { grid-template-columns: 1fr; gap: 24px; } .alignment-figure { width: min(100%, 520px); } }
-@media (max-width: 700px) { .hero { padding: 45px 18px 36px; } .section { padding: 50px 19px; } .cards { grid-template-columns: 1fr; } .alignment-layout { gap: 20px; } .alignment-figure { width: min(100%, 416px); } .evaluation-card { grid-template-columns: 1fr; } .task-image { max-height: 260px; } .affiliations { max-width: 430px; } }
+@media (max-width: 700px) { .hero { padding: 45px 18px 36px; } .section { padding: 50px 19px; } .cards { grid-template-columns: 1fr; } .method-figure { width: 100%; margin-left: auto; } .alignment-layout { gap: 20px; } .alignment-figure { width: min(100%, 416px); } .evaluation-card { grid-template-columns: 1fr; } .task-image { max-height: 260px; } .affiliations { max-width: 430px; } }
